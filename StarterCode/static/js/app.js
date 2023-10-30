@@ -63,3 +63,23 @@ function buildCharts(sample) {
     
     
 }
+
+function init() {
+    //DROPDOWN SELECTOR
+    let SELECTOR = d3.select("#selDataset");
+    //POPULATE SELECT OPTIONS
+    d3.json("https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.1/14-Interactive-Web-Visualizations/02-Homework/samples.json").then((data) => {
+      let sampleNames = data.names;
+
+      for (let i = 0; i < sampleNames.length; i++){
+        SELECTOR
+            .append("option")
+            .text(sampleNames[i])
+            .property("value", sampleNames[i]);
+      };
+      //BUILDING INITIAL PLOTS
+      let firstsample = sampleNames[0];
+      buildCharts(firstsample);
+      buildMetadata(firstsample);
+    });
+}
