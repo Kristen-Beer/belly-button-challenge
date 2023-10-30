@@ -83,3 +83,11 @@ function init() {
       buildMetadata(firstsample);
     });
 }
+
+function optionChanged(newsample) {
+    buildCharts(newSample);
+    buildMetadata(newSample);
+  }
+  
+  // Initialize the dashboard
+  init();
