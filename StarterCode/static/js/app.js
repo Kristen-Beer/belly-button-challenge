@@ -42,4 +42,24 @@ function buildCharts(sample) {
                 }
             }
         ];
+
+        Plotly.newPlot("bubble", bubbledata, bubbleLayout);
+        let yticks = otu_ids.slice(0, 10).map(otuID => `OTU ${otuID}`).reverse();
+        let bardata = [
+            {
+                y: yticks,
+                x: sample_values.slice(0, 10).reverse(),
+                text: otu_labels.slice(0, 10).reverse(),
+                type: "bar",
+                orientation: "h",
+            }
+        ];
+        let barlayout = {
+            title: "Top 10 Bacteria Cultures Found",
+            margin: { t: 30, l: 150 }
+        };
+        Plotly.newPlot("bar", bardata, barlayout);
+    });
+    
+    
 }
